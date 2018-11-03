@@ -1,38 +1,42 @@
 #include <iostream>
 using namespace std;
-#include "funcion.cpp"
-// La línea siguiente estaría definiendo un límite de 20 automóviles/dueños
-#define CANTIDAD 20
 
-struct duenoAutomovil {
-  char nombre[CANTIDAD]; // Obligatorio
-  char apellido[CANTIDAD]; // Obligatorio
-  int dni[CANTIDAD]; // Obligatorio
+// La línea siguiente estaría definiendo un límite de 20 automóviles/dueños
+#define COCHERAFIJA 20
+#define COCHERAMOVIL 20
+
+typedef struct DuenoAutomovil {
+  char nombre; // Obligatorio
+  char apellido; // Obligatorio
+  int dni; // Obligatorio
   /* Debe introducir al menos un dato de contacto
      de manera obligatoria. */
-  int telefono[CANTIDAD];
-  char correo_electronico[CANTIDAD];
+  int telefono;
+  char correo_electronico;
 } ST_DUENO;
-struct automovil {
-  char patente[CANTIDAD]; // Obligatorio
-  char tipo_de_vehiculo[CANTIDAD]; // Obligatorio
-  duenoAutomovil nombre;
-  duenoAutomovil apellido;
+typedef struct Automovil {
+  char patente; // Obligatorio
+  char tipoDeVehiculo; // Obligatorio
+  DuenoAutomovil nombre;
+  DuenoAutomovil apellido;
 } ST_AUTOMOVIL;
-struct cochera {
-  int id[CANTIDAD];
-  automovil tipo_de_vehiculo;
-  int fecha_completa_y_horario[CANTIDAD];
-  int precio[CANTIDAD];
-  int pagos_mensuales[CANTIDAD]; // Útil para cocheras fijas
+
+typedef struct Cochera {
+  int id;
+  Automovil tipoDeVehiculo;
+  int fechaCompletaYHorario;
+  int precio;
+  int pagosMensuales; // Útil para cocheras fijas
 } ST_COCHERA;
-struct garage {
-  int cochera_fija[CANTIDAD];
-  int cochera_movil[CANTIDAD];
-  float precio_cochera_movil_auto_hora[CANTIDAD];
-  float precio_cochera_movil_auto_dia[CANTIDAD];
-  float precio_cochera_fija_auto[CANTIDAD];
-  float precio_cochero_movil_camioneta_fija[CANTIDAD];
-  float precio_cochera_movil_camioneta_dia[CANTIDAD];
-  float precio_cochera_fija_camioneta[CANTIDAD];
+typedef struct Garage {
+  int cocheraFija[COCHERAFIJA];
+  int cocheraMovil[COCHERAMOVIL];
+  float precioCocheraMovilAutoHora;
+  float precioCocheraMovilAutoDia;
+  float precioCocheraFijaAuto;
+  float precioCocheroMovilCamionetaFija;
+  float precioCocheraMovilCamionetaDia;
+  float precioCocheraFijaCamioneta;
 } ST_GARAGE;
+// Función
+void lotePreSeteado();
