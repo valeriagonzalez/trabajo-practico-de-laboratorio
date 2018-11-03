@@ -30,7 +30,7 @@ typedef struct Cochera {
   int fecha;
   int horario;
   int precio;
-  int pagosMensuales=0; // Útil para cocheras fijas
+  int pagosMensuales=-1; // Útil para cocheras fijas
 } ST_COCHERA;
 
 typedef struct Garage {
