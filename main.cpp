@@ -11,4 +11,6 @@ int main() {
 	cout << "5. Listar deudores" << endl;
 	cout << "6. Listar las cobranzas mensuales" << endl;
 	// Finaliza el menú principal
+	//lotePreSeteado();
+	ingresarUnAutomovil();
 }
