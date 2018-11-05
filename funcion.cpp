@@ -3,7 +3,7 @@ using namespace std;
 #include "funcion.h"
 /*  GLOBAL  */
 DuenoAutomovil DuenoAutomovil[COCHERAFIJA];
-ST_AUTOMOVIL Automovil;
+ST_AUTOMOVIL Automovil[COCHERAFIJA+COCHERAMOVIL];
 Cochera Cochera[COCHERAFIJA+COCHERAMOVIL];
 /*  */
 
@@ -20,40 +20,39 @@ int cocheraDestino(){
   while(Cochera[i].pagosMensuales != -1){
     i++;
   }
-  //return i;
-  cout << "I: " << i << endl;
+  return i;
 }
 
 void ingresarUnAutomovil(){
-  // SALIDA: cocheraDestino() -> dice dónde se guardó el auto
-  int ubicacionDisponible = cocheraDestino();
-  /*int tipoAlquiler;
-  cout << "Tipo de vehículo.\nDigite \"1\" para automóvil o \"2\" para camioneta: ";
-  cin >> Automovil.tipoDeVehiculo;
-  cout << "Patente en formato AA000AA: ";
-  cin >> Automovil.patente;
-  cout << "Tipo de alquiler:\n1. Hora\n2. Diaria\n3. Mensual";
-  cin >> tipoAlquiler;
-  if(tipoAlquiler==1 || tipoAlquiler==2){
-      Cochera[0].pagosMensuales=0; // Si "pagosMensuales" es cero, quiere decir que la cochera se alquila por un día o menos.
-  } else if(tipoAlquiler==3){
-      Cochera[0].pagosMensuales=1; // Si "pagosMensuales" es mayor a cero, se asume que el vehículo estará pagando por un mes o más.
-      cout << "Nombre: ";
-      cin >> DuenoAutomovil[0].nombre;
-      cout << "Apellido: ";
-      cin >> DuenoAutomovil[0].apellido;
-      cout << "DNI: ";
-      cin >> DuenoAutomovil[0].dni;
-      cout << "Correo electrónico: ";
-      cin >> DuenoAutomovil[0].correoElectronico;
-      cout << "Teléfono: ";
-      cin >> DuenoAutomovil[0].telefono;
-  } else {
-    cout << "No insertaste la opción correcta, la tenés atroden.";
-  }
+  int ubicacionDisponible = cocheraDestino(); // SALIDA: cocheraDestino() -> dice dónde se guardó el auto
+  int tipoAlquiler;
   cout << "Fecha de ingreso del automóvil: ";
-  cin >> Cochera[0].fecha;
-  cout << "Horario: ";
-  cin >> Cochera[0].horario;*/
+  cin >> Cochera[ubicacionDisponible].fecha;
+  cout << "Horario de ingreso: ";
+  cin >> Cochera[ubicacionDisponible].horario;
+  cout << "Tipo de vehículo.\nDigite \"1\" para automóvil o \"2\" para camioneta: ";
+  cin >> Automovil[ubicacionDisponible].tipoDeVehiculo;
+  cout << "Patente en formato AA000AA: ";
+  cin >> Automovil[ubicacionDisponible].patente;
+  cout << "Tipo de alquiler:\n1. Hora(s)\n2. Día\n3. Mensual\n";
+  cin >> tipoAlquiler;
+      if(tipoAlquiler==1 || tipoAlquiler==2){
+        Cochera[ubicacionDisponible].pagosMensuales=0; // Si "pagosMensuales" es cero, quiere decir que la cochera se alquila por un día o menos.
+      } else if(tipoAlquiler==3){
+        Cochera[ubicacionDisponible].pagosMensuales=1; // Si "pagosMensuales" es mayor a cero, se asume que el vehículo estará pagando por un mes o más.
+        cout << "Nombre: ";
+        cin >> DuenoAutomovil[ubicacionDisponible].nombre;
+        cout << "Apellido: ";
+        cin >> DuenoAutomovil[ubicacionDisponible].apellido;
+        cout << "DNI: ";
+        cin >> DuenoAutomovil[ubicacionDisponible].dni;
+        cout << "Correo electrónico: ";
+        cin >> DuenoAutomovil[ubicacionDisponible].correoElectronico;
+        cout << "Teléfono: ";
+        cin >> DuenoAutomovil[ubicacionDisponible].telefono;
+      } else {
+        cout << "No insertaste la opción correcta, la tenés atroden.";
+      }
 
+  cout << "¡Excelente! El vehículo está en la cochera " << ubicacionDisponible << endl;
 }
